@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:padishea/screens/login_screen.dart';
+import 'package:padishea/screens/welcome_screen.dart';
 import 'package:padishea/screens/main_screen.dart';
 
 class PadisheaNavigator {
   static final routes = <String, WidgetBuilder>{
-    '/login': (BuildContext context) => LoginScreen(),
+    '/welcome': (BuildContext context) => WelcomeScreen(),
     '/main': (BuildContext context) => MainScreen(),
   };
 
-  static void goToLogin(BuildContext context) {
+  static void goToWelcome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(
-        context, '/login', (Route<dynamic> route) => false);
+        context, '/welcome', (Route<dynamic> route) => false);
   }
 
   static void gotoMain(BuildContext context) {

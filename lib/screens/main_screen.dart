@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+  SystemChrome.setEnabledSystemUIOverlays([]);
     return new Scaffold(
       body: new Stack(
         fit: StackFit.expand,
@@ -91,7 +93,7 @@ class _MainScreenState extends State<MainScreen> {
                                     margin: const EdgeInsets.only(
                                         top: 16.0, left: 25.0),
                                     child: new Text(
-                                      "Rika Takehara",
+                                      "Moa Kikuchi",
                                       style: new TextStyle(
                                           fontFamily: 'Avenir',
                                           fontSize: 16.0,
@@ -101,12 +103,64 @@ class _MainScreenState extends State<MainScreen> {
                                   new Container(
                                     margin: const EdgeInsets.only(left: 25.0),
                                     child: new Text(
-                                      "Ibu rumah tangga",
+                                      "Housewife",
                                       style: new TextStyle(
                                         fontFamily: 'Avenir',
                                         fontSize: 14.0,
                                       ),
                                     ),
+                                  ),
+                                  new Row(
+                                    children: <Widget>[
+                                      new Container(
+                                        margin: const EdgeInsets.only(
+                                            left: 25.0, top: 16.0, right: 8.0),
+                                        child: new Icon(
+                                          Icons.location_city,
+                                          color: Colors.teal,
+                                        ),
+                                      ),
+                                      new Expanded(
+                                        flex: 1,
+                                        child: new Container(
+                                          margin:
+                                              const EdgeInsets.only(top: 12.0),
+                                          child: new Text(
+                                            "Tōkyō-to, Toshima-ku, Sugamo,巣鴨１丁目１６−１ ２F",
+                                            style: new TextStyle(
+                                              fontFamily: 'Avenir',
+                                              fontSize: 12.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  new Row(
+                                    children: <Widget>[
+                                      new Container(
+                                        margin: const EdgeInsets.only(
+                                            left: 25.0, top: 16.0, right: 8.0),
+                                        child: new Icon(
+                                          Icons.phone,
+                                          color: Colors.teal,
+                                        ),
+                                      ),
+                                      new Expanded(
+                                        flex: 1,
+                                        child: new Container(
+                                          margin:
+                                              const EdgeInsets.only(top: 12.0),
+                                          child: new Text(
+                                            "+818-135-789",
+                                            style: new TextStyle(
+                                              fontFamily: 'Avenir',
+                                              fontSize: 12.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -241,7 +295,7 @@ class LabelNumber extends StatelessWidget {
             child: new Text(
               title,
               style: new TextStyle(
-                  color: Colors.white, fontSize: 16.0, fontFamily: 'Avenir'),
+                  color: Colors.white, fontSize: 14.0, fontFamily: 'Avenir'),
             ),
           ),
         ],

@@ -12,25 +12,29 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 3), () => PadisheaNavigator.goToLogin(context));
+    Timer(Duration(seconds: 3), () => PadisheaNavigator.goToWelcome(context));
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Column(
-        children: <Widget>[
-          new Expanded(
-            flex: 2,
-            child: new Container(
-              child: new Image(image: new AssetImage("assets/farmer.png")),
+      body: new Center(
+        child: new Column(
+          children: <Widget>[
+            new Expanded(
+              flex: 2,
+              child: new Container(
+                width: 30.0,
+                height: 30.0,
+                child: new Image(image: new AssetImage("assets/farmer.png")),
+              ),
             ),
-          ),
-          new Container(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: new CircularProgressIndicator(),
-          ),
-        ],
+            new Container(
+              padding: const EdgeInsets.only(bottom: 18.0),
+              child: new CircularProgressIndicator(),
+            ),
+          ],
+        ),
       ),
     );
   }

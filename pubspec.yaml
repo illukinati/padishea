@@ -30,6 +30,7 @@ flutter:
    - assets/farmer.png
    - assets/logo.jpg
    - assets/moa.jpg
+   - assets/cinta.jpeg
   fonts:
     - family: Avenir
       fonts:

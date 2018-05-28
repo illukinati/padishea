@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:padishea/navigations/padishea_navigator.dart';
 
-class LoginScreen extends StatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => new _LoginScreenState();
+  _WelcomeScreenState createState() => new _WelcomeScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:padishea/screens/splash_screen.dart';
 import 'package:padishea/navigations/padishea_navigator.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
