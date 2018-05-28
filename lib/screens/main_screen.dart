@@ -6,6 +6,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  Color gradientStart = Colors.black;
+  Color gradientEnd = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -15,6 +18,15 @@ class _MainScreenState extends State<MainScreen> {
           new Image(
             image: new AssetImage("assets/moa.jpg"),
             fit: BoxFit.cover,
+          ),
+          new Container(
+            decoration: new BoxDecoration(
+                gradient: new LinearGradient(
+                    colors: [gradientStart, gradientEnd.withOpacity(0.01)],
+                    begin: new FractionalOffset(0.5, 1.0),
+                    end: new FractionalOffset(0.5, 0.0),
+                    stops: [0.0, 0.9],
+                    tileMode: TileMode.clamp)),
           ),
           new Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -43,17 +55,35 @@ class _MainScreenState extends State<MainScreen> {
                 flex: 3,
                 child: new Container(
                   decoration: BoxDecoration(
-                    color: Colors.teal,
-                    shape: BoxShape.rectangle,
-                    borderRadius: new BorderRadius.circular(16.0)
-                  ),
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: new BorderRadius.circular(16.0)),
                   padding: const EdgeInsets.all(8.0),
                   margin: const EdgeInsets.all(8.0),
                   child: new Column(
                     children: <Widget>[
                       new Row(
                         children: <Widget>[
-
+                          new Column(
+                            children: <Widget>[
+                              new Container(
+                                padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+                                child: new Text("Rika Takehara",
+                                    style: new TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold
+                                    )),
+                              ),new Container(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: new Text("Ibu rumah tangga",
+                                    style: new TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontSize: 16.0,
+                                    )),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ],
@@ -92,7 +122,8 @@ class LabelNumber extends StatelessWidget {
                 style: new TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16.0),
+                    fontSize: 16.0,
+                    fontFamily: 'Avenir'),
               ),
             ),
           ),
@@ -101,7 +132,10 @@ class LabelNumber extends StatelessWidget {
             alignment: alignment,
             child: new Text(
               title,
-              style: new TextStyle(color: Colors.white, fontSize: 16.0),
+              style: new TextStyle(
+                color: Colors.white, 
+                fontSize: 16.0,
+                fontFamily: 'Avenir'),
             ),
           ),
         ],
