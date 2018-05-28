@@ -31,8 +31,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           new Expanded(
             flex: 5,
-            child: new Container(
-              child: new Image.asset("assets/logo.jpg"),
+            child: new Hero(
+              tag: 'logo-padishea',
+              child: new Container(
+                child: new Image.asset("assets/logo.jpg"),
+              ),
             ),
           ),
           new Expanded(
@@ -49,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       minWidth: 200.0,
                       height: 42.0,
                       onPressed: () {
-                        PadisheaNavigator.gotoMain(context);
+                        PadisheaNavigator.goToLogin(context);
                       },
                       color: Colors.teal,
                       child: new Text(
