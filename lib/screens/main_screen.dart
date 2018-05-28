@@ -19,14 +19,30 @@ class _MainScreenState extends State<MainScreen> {
             image: new AssetImage("assets/moa.jpg"),
             fit: BoxFit.cover,
           ),
-          new Container(
-            decoration: new BoxDecoration(
-                gradient: new LinearGradient(
-                    colors: [gradientStart, gradientEnd.withOpacity(0.01)],
-                    begin: new FractionalOffset(0.5, 1.0),
-                    end: new FractionalOffset(0.5, 0.0),
-                    stops: [0.0, 0.9],
-                    tileMode: TileMode.clamp)),
+          new Column(
+            children: <Widget>[
+              new Expanded(
+                flex: 5,
+                child: new Container(
+                  decoration: new BoxDecoration(
+                      gradient: new LinearGradient(
+                          colors: [
+                            gradientStart,
+                            gradientEnd.withOpacity(0.01)
+                          ],
+                          begin: new FractionalOffset(0.5, 1.0),
+                          end: new FractionalOffset(0.5, 0.0),
+                          stops: [0.0, 0.3],
+                          tileMode: TileMode.clamp)),
+                ),
+              ),
+              new Expanded(
+                flex: 3,
+                child: new Container(
+                  decoration: new BoxDecoration(color: Colors.black),
+                ),
+              ),
+            ],
           ),
           new Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -55,36 +71,96 @@ class _MainScreenState extends State<MainScreen> {
                 flex: 3,
                 child: new Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.rectangle,
-                      borderRadius: new BorderRadius.circular(16.0)),
-                  padding: const EdgeInsets.all(8.0),
+                    color: Colors.grey[100],
+                    shape: BoxShape.rectangle,
+                    borderRadius: new BorderRadius.circular(16.0),
+                  ),
                   margin: const EdgeInsets.all(8.0),
                   child: new Column(
                     children: <Widget>[
-                      new Row(
-                        children: <Widget>[
-                          new Column(
+                      new Expanded(
+                        flex: 2,
+                        child: new Row(
+                          children: <Widget>[
+                            new Expanded(
+                              flex: 1,
+                              child: new Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new Container(
+                                    margin: const EdgeInsets.only(
+                                        top: 16.0, left: 25.0),
+                                    child: new Text(
+                                      "Rika Takehara",
+                                      style: new TextStyle(
+                                          fontFamily: 'Avenir',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  new Container(
+                                    margin: const EdgeInsets.only(left: 25.0),
+                                    child: new Text(
+                                      "Ibu rumah tangga",
+                                      style: new TextStyle(
+                                        fontFamily: 'Avenir',
+                                        fontSize: 14.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            new CircleButton(
+                              icon: Icons.edit,
+                            ),
+                          ],
+                        ),
+                      ),
+                      new Expanded(
+                        flex: 1,
+                        child: new Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.rectangle,
+                              borderRadius: new BorderRadius.circular(16.0)),
+                          padding: const EdgeInsets.all(8.0),
+                          child: new Row(
                             children: <Widget>[
-                              new Container(
-                                padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-                                child: new Text("Rika Takehara",
-                                    style: new TextStyle(
-                                      fontFamily: 'Avenir',
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.bold
-                                    )),
-                              ),new Container(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: new Text("Ibu rumah tangga",
-                                    style: new TextStyle(
-                                      fontFamily: 'Avenir',
-                                      fontSize: 16.0,
-                                    )),
+                              new Expanded(
+                                flex: 1,
+                                child: new Icon(
+                                  Icons.dock,
+                                  color: Colors.teal,
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 1,
+                                child: new Icon(
+                                  Icons.search,
+                                  color: Colors.teal,
+                                ),
+                              ),
+                              new CircleButton(
+                                icon: Icons.add,
+                              ),
+                              new Expanded(
+                                flex: 1,
+                                child: new Icon(
+                                  Icons.notifications,
+                                  color: Colors.teal,
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 1,
+                                child: new Icon(
+                                  Icons.train,
+                                  color: Colors.teal,
+                                ),
                               ),
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -93,6 +169,38 @@ class _MainScreenState extends State<MainScreen> {
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class CircleButton extends StatelessWidget {
+  IconData icon;
+
+  CircleButton({this.icon});
+  @override
+  Widget build(BuildContext context) {
+    return new Align(
+      alignment: Alignment.topCenter,
+      child: new Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.all(8.0),
+        width: 50.0,
+        height: 50.0,
+        decoration: new BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.teal,
+        ),
+        child: new FloatingActionButton(
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.white,
+          child: new Icon(
+            this.icon,
+          ),
+          onPressed: () {
+            // TODO:
+          },
+        ),
       ),
     );
   }
@@ -133,9 +241,7 @@ class LabelNumber extends StatelessWidget {
             child: new Text(
               title,
               style: new TextStyle(
-                color: Colors.white, 
-                fontSize: 16.0,
-                fontFamily: 'Avenir'),
+                  color: Colors.white, fontSize: 16.0, fontFamily: 'Avenir'),
             ),
           ),
         ],
