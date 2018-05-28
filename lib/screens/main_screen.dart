@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:padishea/navigations/padishea_navigator.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -7,7 +8,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   Color gradientStart = Colors.black;
-  Color gradientEnd = Colors.white;
+  Color gradientEnd = Colors.transparent;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,12 @@ class _MainScreenState extends State<MainScreen> {
       body: new Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          new Image(
-            image: new AssetImage("assets/moa.jpg"),
-            fit: BoxFit.cover,
+          new Hero(
+            tag: 'coba',
+            child: new Image(
+              image: new AssetImage("assets/moa.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
           new Column(
             children: <Widget>[
@@ -28,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
                       gradient: new LinearGradient(
                           colors: [
                             gradientStart,
-                            gradientEnd.withOpacity(0.01)
+                            gradientEnd.withOpacity(0.0)
                           ],
                           begin: new FractionalOffset(0.5, 1.0),
                           end: new FractionalOffset(0.5, 0.0),
@@ -165,6 +169,8 @@ class _MainScreenState extends State<MainScreen> {
                             ),
                             new CircleButton(
                               icon: Icons.edit,
+                              width: 40.0,
+                              height: 40.0,
                             ),
                           ],
                         ),
@@ -181,9 +187,14 @@ class _MainScreenState extends State<MainScreen> {
                             children: <Widget>[
                               new Expanded(
                                 flex: 1,
-                                child: new Icon(
-                                  Icons.dock,
-                                  color: Colors.teal,
+                                child: new GestureDetector(
+                                  child: new Icon(
+                                    Icons.dock,
+                                    color: Colors.teal,
+                                  ),
+                                  onTap: () {
+                                    PadisheaNavigator.goTohistory(context);
+                                  },
                                 ),
                               ),
                               new Expanded(
@@ -194,8 +205,7 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                               ),
                               new CircleButton(
-                                icon: Icons.add,
-                              ),
+                                  icon: Icons.add, width: 50.0, height: 50.0),
                               new Expanded(
                                 flex: 1,
                                 child: new Icon(
@@ -228,8 +238,10 @@ class _MainScreenState extends State<MainScreen> {
 
 class CircleButton extends StatelessWidget {
   IconData icon;
+  double width;
+  double height;
 
-  CircleButton({this.icon});
+  CircleButton({this.icon, this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return new Align(
@@ -237,21 +249,26 @@ class CircleButton extends StatelessWidget {
       child: new Container(
         alignment: Alignment.center,
         margin: const EdgeInsets.all(8.0),
-        width: 50.0,
-        height: 50.0,
-        decoration: new BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.teal,
-        ),
-        child: new FloatingActionButton(
-          backgroundColor: Colors.teal,
-          foregroundColor: Colors.white,
-          child: new Icon(
-            this.icon,
+        width: this.width,
+        height: this.height,
+        decoration: new ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(100.0)),
+            ),
+            shadows: [
+              BoxShadow(
+                  color: Colors.grey, offset: Offset(0.0, 3.0), blurRadius: 4.0)
+            ],
+            color: Colors.teal),
+        child: new GestureDetector(
+          child: new Container(
+            color: Colors.teal,
+            child: new Icon(
+              this.icon,
+              color: Colors.white,
+            ),
           ),
-          onPressed: () {
-            // TODO:
-          },
+          onTap: () {},
         ),
       ),
     );

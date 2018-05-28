@@ -31,6 +31,9 @@ flutter:
    - assets/logo.jpg
    - assets/moa.jpg
    - assets/cinta.jpeg
+   - assets/icon_fb.png
+   - assets/icon_google.png
+   - assets/icon_twitter.png
   fonts:
     - family: Avenir
       fonts:

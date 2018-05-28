@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: new Column(
                 children: <Widget>[
                   new Container(
-                    margin: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 20.0),
+                    margin: const EdgeInsets.fromLTRB(50.0, 0.0, 50.0, 10.0),
                     child: new TextFormField(
                       autofocus: false,
                       decoration: new InputDecoration(
@@ -59,25 +59,65 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                     ),
                   ),
-                  new Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: new Material(
-                      borderRadius: BorderRadius.circular(30.0),
-                      shadowColor: Colors.greenAccent.shade100,
-                      elevation: 5.0,
-                      child: new MaterialButton(
-                        minWidth: 200.0,
-                        height: 42.0,
-                        onPressed: () {
-                          PadisheaNavigator.gotoMain(context);
-                        },
-                        color: Colors.teal,
-                        child: new Text(
-                          'Login',
-                          style: new TextStyle(
-                              color: Colors.white, fontFamily: 'Avenir'),
+                  new Hero(
+                    tag: 'btn-login',
+                    child: new Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: new Material(
+                        borderRadius: BorderRadius.circular(30.0),
+                        shadowColor: Colors.greenAccent.shade100,
+                        elevation: 5.0,
+                        child: new MaterialButton(
+                          minWidth: 200.0,
+                          height: 42.0,
+                          onPressed: () {
+                            PadisheaNavigator.gotoMain(context);
+                          },
+                          color: Colors.teal,
+                          child: new Text(
+                            'Login',
+                            style: new TextStyle(
+                                color: Colors.white, fontFamily: 'Avenir'),
+                          ),
                         ),
                       ),
+                    ),
+                  ),
+                  new Center(
+                    child: new Row(
+                      children: <Widget>[
+                        new Expanded(
+                          flex: 1,
+                          child: new Container(),
+                        ),
+                        new Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: new Image(
+                            image: AssetImage("assets/icon_fb.png"),
+                            width: 30.0,
+                            height: 30.0,
+                          ),
+                        ),
+                        new Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: new Image(
+                              image: AssetImage("assets/icon_twitter.png"),
+                              width: 30.0,
+                              height: 30.0,
+                            )),
+                        new Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: new Image(
+                            image: AssetImage("assets/icon_google.png"),
+                            width: 30.0,
+                            height: 30.0,
+                          ),
+                        ),
+                        new Expanded(
+                          flex: 1,
+                          child: new Container(),
+                        ),
+                      ],
                     ),
                   ),
                 ],
