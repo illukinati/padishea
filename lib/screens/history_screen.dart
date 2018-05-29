@@ -6,22 +6,26 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  List<bool> _data = new List<bool>();
+  List<String> _image = new List<String>();
+  List<String> _point = new List<String>();
+  List<String> _desc = new List<String>();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     setState(() {
-      for (int i = 0; i < 10; i++) {
-        _data.add(false);
-      }
-    });
-  }
+      _desc.add("Indomie 5 pcs");
+      _desc.add("Rice 2 Kg");
+      _desc.add("Rice 1 Kg");
 
-  void _onChange(bool value, int index) {
-    setState(() {
-      _data[index] = value;
+      _image.add("assets/indomie.jpg");
+      _image.add("assets/padi.jpeg");
+      _image.add("assets/padi.jpeg");
+
+      _point.add("-50");
+      _point.add("+100");
+      _point.add("+50");
     });
   }
 
@@ -32,23 +36,40 @@ class _HistoryScreenState extends State<HistoryScreen> {
         title: new Text('History'),
       ),
       body: new ListView.builder(
-        itemCount: _data.length,
+        itemCount: _desc.length,
         itemBuilder: (BuildContext context, int index) {
           return new Card(
             child: new Container(
               padding: const EdgeInsets.all(32.0),
-              child: new Column(
-                children: <Widget>[
-                  new Text('This is item'),
-                  new CheckboxListTile(
-                    value: _data[index],
-                    controlAffinity: ListTileControlAffinity.leading,
-                    title: new Text('Click me item ${index}'),
-                    onChanged: (bool value) {
-                      _onChange(value, index);
-                    },
-                  ),
-                ],
+              child: new Center(
+                child: new Column(
+                  children: <Widget>[
+                    new ListTile(
+                      leading: new Container(
+                        child: new Image(
+                          image: new AssetImage("${_image[index]}"),
+                          width: 100.0,
+                          height: 100.0,
+                        ),
+                      ),
+                      title: new Container(
+                        margin: const EdgeInsets.only(left: 32.0),
+                        child: new Text(
+                          "${_point[index]}",
+                          style: new TextStyle(
+                              fontFamily: 'Avenir',
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.orange),
+                        ),
+                      ),
+                      subtitle: new Container(
+                        margin: const EdgeInsets.only(left: 32.0),
+                        child: new Text('${_desc[index]}')),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
               ),
             ),
           );

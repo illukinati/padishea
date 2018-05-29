@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:padishea/navigations/padishea_navigator.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -7,6 +10,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Future<String> getData() async {
+    http.Response response = await http.get(
+        Uri.encodeFull(
+            "http://puskesmasdampit.com/service_login.php?email=superkader@mail.com&pass=superkader"),
+        headers: {"Accept": "application/json"});
+
+    print(response.body);
+
+    PadisheaNavigator.gotoMain(context);
+
+    // List data = JSON.decode(response.body);
+    // print(data[0]["login"]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -71,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           minWidth: 200.0,
                           height: 42.0,
                           onPressed: () {
-                            PadisheaNavigator.gotoMain(context);
+                            getData();
                           },
                           color: Colors.teal,
                           child: new Text(
@@ -99,7 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         new Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: new Image(
                               image: AssetImage("assets/icon_twitter.png"),
                               width: 30.0,

@@ -34,6 +34,8 @@ flutter:
    - assets/icon_fb.png
    - assets/icon_google.png
    - assets/icon_twitter.png
+   - assets/indomie.jpg
+   - assets/padi.jpeg
   fonts:
     - family: Avenir
       fonts:
