@@ -59,11 +59,28 @@ class _MainScreenState extends State<MainScreen> {
                       edgeInsets: const EdgeInsets.only(left: 32.0),
                       alignment: Alignment.bottomLeft,
                     ),
-                    new LabelNumber(
-                      number: '25',
-                      title: 'Your seeds',
-                      edgeInsets: const EdgeInsets.only(right: 32.0),
-                      alignment: Alignment.bottomRight,
+                    new Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        new Expanded(
+                          flex: 1,
+                          child: new Container(
+                            alignment: Alignment.topRight,
+                            margin: const EdgeInsets.only(top: 30.0, right: 32.0),
+                            child: new Icon(
+                              Icons.close,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        new LabelNumber(
+                          number: '25',
+                          title: 'Your seeds',
+                          edgeInsets: const EdgeInsets.only(right: 32.0),
+                          alignment: Alignment.bottomRight,
+                        ),
+                      ],
                     ),
                   ],
                 ),
