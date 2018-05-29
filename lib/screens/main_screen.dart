@@ -168,18 +168,9 @@ class _MainScreenState extends State<MainScreen> {
                               icon: Icons.edit,
                               width: 40.0,
                               height: 40.0,
-                              tap: new GestureDetector(
-                                child: new Container(
-                                  color: Colors.teal,
-                                  child: new Icon(
-                                    Icons.edit,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () {
-                                  PadisheaNavigator.goToEditProfile(context);
-                                },
-                              ),
+                              tap: () {
+                                PadisheaNavigator.goToEditProfile(context);
+                              },
                             ),
                           ],
                         ),
@@ -217,18 +208,9 @@ class _MainScreenState extends State<MainScreen> {
                                 icon: Icons.add,
                                 width: 50.0,
                                 height: 50.0,
-                                tap: new GestureDetector(
-                                  child: new Container(
-                                    color: Colors.teal,
-                                    child: new Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    //TODO
-                                  },
-                                ),
+                                tap: () {
+                                  PadisheaNavigator.goToEditProfile(context);
+                                },
                               ),
                               new Expanded(
                                 flex: 1,
@@ -269,7 +251,7 @@ class CircleButton extends StatelessWidget {
   IconData icon;
   double width;
   double height;
-  Widget tap;
+  Function tap;
 
   CircleButton({this.icon, this.width, this.height, this.tap});
   @override
@@ -290,7 +272,16 @@ class CircleButton extends StatelessWidget {
                   color: Colors.grey, offset: Offset(0.0, 3.0), blurRadius: 4.0)
             ],
             color: Colors.teal),
-        child: this.tap,
+        child: new GestureDetector(
+          child: new Container(
+            color: Colors.teal,
+            child: new Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+          ),
+          onTap: this.tap,
+        ),
       ),
     );
   }
